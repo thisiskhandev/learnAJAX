@@ -14,20 +14,20 @@ if (mysqli_num_rows($result) > 0) {
 
     foreach ($result as $keys) {
         $output .= "
-        <tr>
+        <tr s-data-id='{$keys['id']}'>
             <td>{$keys['id']}</td>
             <td>{$keys['name']}</td>
             <td>{$keys['class']}</td>
             <td>{$keys['phone']}</td>
             <td>
-                <button class='btn_icons edit' id='' data-id=''>
+                <a class='btn_icons edit modal-trigger' href='#editModal' id='{$keys['id']}' data-id='{$keys['id']}'>
                   <i class='small material-icons'>edit</i>
-                </button>
+                </a>
             </td>
             <td>
-                <button class='btn_icons delete' id='' data-id=''>
+                <a class='btn_icons delete modal-trigger' href='#modal1' id='{$keys['id']}' data-id='{$keys['id']}'>
                   <i class='small material-icons red-text'>delete</i>
-                </button>
+                </a>
             </td>
         </tr>";
     }

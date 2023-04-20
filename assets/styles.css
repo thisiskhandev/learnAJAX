@@ -14,18 +14,18 @@ thead {
   border-radius: 0;
 }
 
-button.btn_icons {
+a.btn_icons {
   background-color: transparent;
   border: 0;
   cursor: pointer;
   transition: 0.2s;
 }
-button.btn_icons:hover {
+a.btn_icons:hover {
   transition: 0.2s;
   transform: scale(0.9);
 }
 
-.toast.rounded.green.accent-4 {
+.toast.rounded.green {
   bottom: 15px;
   top: auto !important;
   position: fixed;
@@ -35,4 +35,27 @@ button.btn_icons:hover {
   text-align: center;
   margin: auto;
   justify-content: center;
+}
+
+.confirm_box .modal-footer {
+  display: flex;
+  justify-content: end;
+}
+
+.confirm_box .modal-footer > a {
+  display: flex;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15px;
+}
+
+@media only screen and (min-width: 600px) {
+  .confirm_box {
+    width: 30%;
+  }
+  .confirm_box  {
+    height: 50% !important;
+    top: 20% !important;
+  }
 }

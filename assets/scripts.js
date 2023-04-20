@@ -14,7 +14,7 @@ $(document).ready(function () {
     </div>
   </div>
   `;
-  const loadData = () => {
+  const loadRecords = () => {
     $.ajax({
       url: "load-data.php",
       type: "POST",
@@ -30,10 +30,10 @@ $(document).ready(function () {
       },
     });
   };
-  loadData();
+  loadRecords(); // Loading records
 
   $("#viewData").click(function (e) {
-    loadData();
+    loadRecords();
   });
 
   $("#phone").on("keypress keyup blur", function (e) {
@@ -44,6 +44,7 @@ $(document).ready(function () {
     );
   });
 
+  // Insert Records
   $("button#save").click(function (e) {
     e.preventDefault();
     let name = $("#name").val();
@@ -137,9 +138,9 @@ $(document).ready(function () {
               },
               1000
             );
-            loadData();
+            loadRecords();
             M.toast({
-              html: "Data Inserted!",
+              html: "Data Added!",
               classes: "rounded green accent-4",
               displayLength: 2000,
             });
@@ -156,4 +157,121 @@ $(document).ready(function () {
       });
     }
   });
+
+  // Delete Record Get
+  $(document).on("click", "a.delete", function () {
+    let studentID = $(this).data("id");
+    $(".delete_confirm").attr("data-id", studentID);
+    let sname = $(`tr[s-data-id=${studentID}] > td:nth-child(2)`).text();
+    let sphone = $(`tr[s-data-id=${studentID}] > td:nth-child(3)`).text();
+    let sclass = $(`tr[s-data-id=${studentID}] > td:nth-child(4)`).text();
+    $("#sname").text(sname);
+    $("#sphone").text(sphone);
+    $("#sclass").text(sclass);
+    // console.log(Number(modalDelete.attr("data-id")));
+    // console.log(studentID);
+  });
+
+  // Delete Record
+  $(".delete_confirm").click(function () {
+    let studentID = Number($(this).attr("data-id"));
+    $.ajax({
+      url: "delete-data.php",
+      type: "POST",
+      data: { id: studentID },
+      success: function (data) {
+        console.log(studentID);
+        if (data == 1) {
+          console.log("deleted!");
+          loadRecords();
+        } else {
+          console.warn("Unable to delete records!");
+        }
+      },
+    });
+  });
+
+  // Edit Record Get
+  $(document).on("click", "a.edit", function () {
+    let studentID = $(this).data("id");
+    $(".edit_confirm").attr("data-id", studentID);
+    let sname = $(`tr[s-data-id=${studentID}] > td:nth-child(2)`).text();
+    let sphone = $(`tr[s-data-id=${studentID}] > td:nth-child(4)`).text();
+    let sclass = $(`tr[s-data-id=${studentID}] > td:nth-child(3)`).text();
+    $("#e-name").val(sname);
+    $("#e-phone").val(sphone);
+    $("#e-class").val(sclass);
+
+    // Dont hide button if any of field value is empty
+    if (
+      $("#e-name").val() !== "" ||
+      $("#e-phone").val() !== "" ||
+      $("#e-class").val() !== ""
+    ) {
+      $(".confirm_box .edit_confirm").fadeIn(0);
+    }
+  });
+
+  // Hide Save button if user empty edit fields
+  $("#e-name").on("kepress blur keyup", function (e) {
+    console.log(e.target.value);
+    if (e.target.value === "") {
+      $(".confirm_box .edit_confirm").fadeOut(300);
+    } else {
+      $(".confirm_box .edit_confirm").fadeIn(300);
+    }
+  });
+
+  $("#e-phone").on("kepress blur keyup", function (e) {
+    console.log(e.target.value);
+    if (e.target.value === "") {
+      $(".confirm_box .edit_confirm").fadeOut(300);
+    } else {
+      $(".confirm_box .edit_confirm").fadeIn(300);
+    }
+  });
+
+  $("#e-class").on("kepress blur keyup", function (e) {
+    console.log(e.target.value);
+    if (e.target.value === "") {
+      $(".confirm_box .edit_confirm").fadeOut(300);
+    } else {
+      $(".confirm_box .edit_confirm").fadeIn(300);
+    }
+  });
+
+  // Edit Save
+  $(".edit_confirm").click(function () {
+    let studentID = Number($(this).attr("data-id"));
+    let name = $("#e-name").val();
+    let phone = $("#e-phone").val();
+    let sclass = $("#e-class").val();
+
+    $.ajax({
+      url: "edit-data.php",
+      type: "POST",
+      data: { id: studentID, name, phone, class: sclass },
+      success: function (data) {
+        // console.log(studentID);
+        if (data == 1) {
+          M.toast({
+            html: "Student ID:" + studentID + " Record Updated!",
+            classes: "rounded green accent-2 black-text",
+            displayLength: 3000,
+          });
+          loadRecords();
+        } else {
+          console.warn("Unable to edit record!");
+        }
+      },
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  var elems = document.querySelectorAll(".modal");
+  M.Modal.init(elems);
+  // var elem = document.getElementById("modal1");
+  // var instance = M.Modal.getInstance(elem)
+  // console.log(instance.close());
 });

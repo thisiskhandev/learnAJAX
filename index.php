@@ -141,6 +141,113 @@
       </section>
     </main>
 
+    <!-- Delete Modal -->
+    <div id="modal1" class="modal confirm_box modal-fixed-footer s2">
+      <div class="modal-content">
+        <p class="flow-text">Are You Sure want to delete this record?</p>
+        <ul>
+          <li>
+            <h5>
+              Student:
+              <strong
+                id="sname"
+                class="lighten-5 red"
+                style="padding: 0 10px"
+              ></strong>
+            </h5>
+          </li>
+          <li>
+            <h5>
+              Phone:
+              <strong
+                id="sphone"
+                class="lighten-5 red"
+                style="padding: 0 10px"
+              ></strong>
+            </h5>
+          </li>
+          <li>
+            <h5>
+              Class:
+              <strong
+                id="sclass"
+                class="lighten-5 red"
+                style="padding: 0 10px"
+              ></strong>
+            </h5>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect btn-flat"
+          ><span>Cancel</span></a
+        >
+        <a
+          href="javascript:void(0)"
+          data-id=""
+          class="modal-close delete_confirm waves-effect waves-darken-1 btn red lighten-1"
+          ><span>Delete</span> <i class="small material-icons">delete</i></a
+        >
+      </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div id="editModal" class="modal confirm_box modal-fixed-footer s2">
+      <div class="modal-content">
+        <p class="flow-text">Edit Record</p>
+        <div class="row">
+          <form class="col s12" id="addForm">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">person</i>
+                <input
+                  id="e-name"
+                  name="name"
+                  type="text"
+                  class="validate"
+                  required
+                  placeholder="First Name"
+                />
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">phone_in_talk</i>
+                <input
+                  id="e-phone"
+                  name="phone"
+                  type="tel"
+                  class="validate"
+                  required
+                  placeholder="Phone Number"
+                />
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">class</i>
+                <input
+                  id="e-class"
+                  name="class"
+                  type="text"
+                  class="validate"
+                  required
+                  placeholder="Class"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-close waves-effect btn-flat"
+          ><span>Cancel</span></a
+        >
+        <a
+          href="javascript:void(0)"
+          data-id=""
+          class="modal-close edit_confirm waves-effect waves-darken-1 btn green lighten-1"
+          ><span>Confirm</span> <i class="small material-icons">delete</i></a
+        >
+      </div>
+    </div>
+
     <footer>
       <div class="light-blue lighten-2" style="padding: 10px">
         <h6 class="white-text center" style="margin: 0">
@@ -149,13 +256,13 @@
       </div>
     </footer>
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
       integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/scripts.js"></script>
   </body>
 </html>
