@@ -13,3 +13,26 @@ th,
 thead {
   border-radius: 0;
 }
+
+button.btn_icons {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+button.btn_icons:hover {
+  transition: 0.2s;
+  transform: scale(0.9);
+}
+
+.toast.rounded.green.accent-4 {
+  bottom: 15px;
+  top: auto !important;
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 20%;
+  text-align: center;
+  margin: auto;
+  justify-content: center;
+}
