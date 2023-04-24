@@ -87,6 +87,11 @@ a.edit_confirm:hover span {
   transform: translateX(-10px);
 }
 
+.pagi_sec {
+  margin: 30px 0;
+  text-align: center;
+}
+
 @media only screen and (min-width: 600px) {
   .confirm_box {
     width: 30%;

@@ -11,6 +11,20 @@ $sql = "SELECT * FROM students
 $result = mysqli_query($conn, $sql) or die("Search Query failed: " . mysqli_error($conn));
 $output = "";
 if (mysqli_num_rows($result) > 0) {
+    $output .= "
+    <table>
+    <thead class='light-blue lighten-2 white-text'>
+        <tr>
+            <th>Id</th>
+            <th>Full Name</th>
+            <th>Class</th>
+            <th>Phone</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+    ";
     foreach ($result as $keys) {
         // echo "<pre>";
         // print_r($keys);
@@ -32,9 +46,23 @@ if (mysqli_num_rows($result) > 0) {
                 </a>
             </td>
         </tr>";
-        echo $output;
-        // mysqli_close($conn);
     }
+    $output .= "
+    </tbody></table>
+    <div class='pagi_sec'>
+        <ul class='pagination'>
+            <li class='disabled'><a href='#!'><i class='material-icons'>chevron_left</i></a></li>
+            <li class='active'><a href='#!'>1</a></li>
+            <li class='waves-effect'><a href='#!'>2</a></li>
+            <li class='waves-effect'><a href='#!'>3</a></li>
+            <li class='waves-effect'><a href='#!'>4</a></li>
+            <li class='waves-effect'><a href='#!'>5</a></li>
+            <li class='waves-effect'><a href='#!'><i class='material-icons'>chevron_right</i></a></li>
+        </ul>
+    </div>
+    ";
+    mysqli_close($conn);
+    echo $output;
 } else {
-    echo "<h5>No Student found!</h5>";
+    echo "<h5>No Student Record found!</h5>";
 }

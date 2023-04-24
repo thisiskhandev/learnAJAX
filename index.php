@@ -91,37 +91,38 @@
           </div>
         </div>
       </form>
-      <table class="highlight responsive-table">
-        <thead class="light-blue lighten-2 white-text">
-          <tr>
-            <th>Id</th>
-            <th>Full Name</th>
-            <th>Class</th>
-            <th>Phone</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-
-        <tbody id="table-data">
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td>
-              <button class="btn_icons edit" id="" data-id="">
-                <i class="small material-icons">edit</i>
-              </button>
-            </td>
-            <td>
-              <button class="btn_icons delete" id="" data-id="">
-                <i class="small material-icons red-text">delete</i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div id="table-data">
+        <table class="highlight responsive-table">
+          <thead class="light-blue lighten-2 white-text">
+            <tr>
+              <th>Id</th>
+              <th>Full Name</th>
+              <th>Class</th>
+              <th>Phone</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alvin</td>
+              <td>Eclair</td>
+              <td>Eclair</td>
+              <td>$0.87</td>
+              <td>
+                <button class="btn_icons edit" id="" data-id="">
+                  <i class="small material-icons">edit</i>
+                </button>
+              </td>
+              <td>
+                <button class="btn_icons delete" id="" data-id="">
+                  <i class="small material-icons red-text">delete</i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
   </main>
 

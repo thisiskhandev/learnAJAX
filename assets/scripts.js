@@ -213,7 +213,7 @@ $(document).ready(function () {
   });
 
   // Hide Save button if user empty edit fields
-  $("#e-name").on("kepress blur keyup", function (e) {
+  $("#e-name").on("keyup", function (e) {
     console.log(e.target.value);
     if (e.target.value === "") {
       $(".confirm_box .edit_confirm").fadeOut(300);
@@ -222,7 +222,7 @@ $(document).ready(function () {
     }
   });
 
-  $("#e-phone").on("kepress blur keyup", function (e) {
+  $("#e-phone").on("keyup", function (e) {
     console.log(e.target.value);
     if (e.target.value === "") {
       $(".confirm_box .edit_confirm").fadeOut(300);
@@ -231,7 +231,7 @@ $(document).ready(function () {
     }
   });
 
-  $("#e-class").on("kepress blur keyup", function (e) {
+  $("#e-class").on("keyup", function (e) {
     console.log(e.target.value);
     if (e.target.value === "") {
       $(".confirm_box .edit_confirm").fadeOut(300);
@@ -277,7 +277,7 @@ $(document).ready(function () {
         method: "POST",
         data: { searchTerm: searchTerm },
         success: function (data) {
-          // console.log(data);
+          $("#table-data").empty();
           $("#table-data").html(data);
         },
       });
