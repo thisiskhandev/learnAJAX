@@ -6,98 +6,70 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Insert with AJAX</title>
-    <!-- Compiled and minified CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <!--Import Google Icon Font-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./assets/styles.css" />
-  </head>
 
-  <body>
-    <header>
-      <nav>
-        <div class="nav-wrapper light-blue lighten-2">
-          <main class="container">
-            <a href="#" class="brand-logo">Logo</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li><a href="#">Sass</a></li>
-              <li><a href="#">Components</a></li>
-              <li><a href="#">JavaScript</a></li>
-            </ul>
-          </main>
-        </div>
-      </nav>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insert with AJAX</title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
 
-    <!-- Insert Data -->
-    <main class="container">
-      <section class="row">
-        <h2>Insert Data</h2>
-        <div class="row">
-          <form class="col s12" id="addForm">
-            <div class="row">
-              <div class="input-field col s4">
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  class="validate"
-                  required
-                />
-                <label for="name">First Name</label>
-              </div>
-              <div class="input-field col s4">
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  class="validate"
-                  required
-                />
-                <label for="phone">Phone Number</label>
-              </div>
-              <div class="input-field col s4">
-                <input
-                  id="class"
-                  name="class"
-                  type="text"
-                  class="validate"
-                  required
-                />
-                <label for="class">Class</label>
-              </div>
+<body>
+  <header>
+    <nav>
+      <div class="nav-wrapper light-blue lighten-2">
+        <main class="container">
+          <a href="#" class="brand-logo">Logo</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#">Sass</a></li>
+            <li><a href="#">Components</a></li>
+            <li><a href="#">JavaScript</a></li>
+          </ul>
+        </main>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Insert Data -->
+  <main class="container">
+    <section class="row">
+      <h2>Insert Data</h2>
+      <div class="row">
+        <form class="col s12" id="addForm">
+          <div class="row">
+            <div class="input-field col s4">
+              <input id="name" name="name" type="text" class="validate" required />
+              <label for="name">First Name</label>
             </div>
-            <button
-              class="btn waves-effect waves-light light-blue"
-              type="submit"
-              name="action"
-              id="save"
-            >
-              Submit
-              <i class="material-icons right">send</i>
-            </button>
-          </form>
-        </div>
-      </section>
-    </main>
+            <div class="input-field col s4">
+              <input id="phone" name="phone" type="tel" class="validate" required />
+              <label for="phone">Phone Number</label>
+            </div>
+            <div class="input-field col s4">
+              <input id="class" name="class" type="text" class="validate" required />
+              <label for="class">Class</label>
+            </div>
+          </div>
+          <button class="btn waves-effect waves-light light-blue" type="submit" name="action" id="save">
+            Submit
+            <i class="material-icons right">send</i>
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
 
-    <!-- View Data -->
-    <main class="container" id="viewDataRecord" style="overflow: hidden">
-      <section class="row">
-        <h2>View Data</h2>
+  <!-- View Data -->
+  <main class="container" id="viewDataRecord" style="overflow: hidden">
+    <section class="row">
+      <!--
         <div class="" style="margin: 10px; margin-left: 0">
-          <!-- <button
+           <button
             class="btn waves-effect waves-light light-blue"
             name="viewData"
             id="viewData"
@@ -105,164 +77,127 @@
           >
             View
             <i class="material-icons left">visibility</i>
-          </button> -->
+          </button> 
         </div>
-        <table class="highlight responsive-table">
-          <thead class="light-blue lighten-2 white-text">
-            <tr>
-              <th>Id</th>
-              <th>Full Name</th>
-              <th>Class</th>
-              <th>Phone</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
+        -->
+      <form id="searchForm" style="margin: 10px;">
+        <div class="row" style="margin: 0;">
+          <div class="col s8" style="margin: 0;">
+            <h2 style="margin: 0;">View Data</h2>
+          </div>
+          <div class="input-field col s4" style="margin: 0;">
+            <input id="search" name="search" type="text" autocomplete="false" />
+            <label for="search">Search...</label>
+          </div>
+        </div>
+      </form>
+      <table class="highlight responsive-table">
+        <thead class="light-blue lighten-2 white-text">
+          <tr>
+            <th>Id</th>
+            <th>Full Name</th>
+            <th>Class</th>
+            <th>Phone</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
 
-          <tbody id="table-data">
-            <tr>
-              <td>Alvin</td>
-              <td>Eclair</td>
-              <td>Eclair</td>
-              <td>$0.87</td>
-              <td>
-                <button class="btn_icons edit" id="" data-id="">
-                  <i class="small material-icons">edit</i>
-                </button>
-              </td>
-              <td>
-                <button class="btn_icons delete" id="" data-id="">
-                  <i class="small material-icons red-text">delete</i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    </main>
+        <tbody id="table-data">
+          <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+            <td>
+              <button class="btn_icons edit" id="" data-id="">
+                <i class="small material-icons">edit</i>
+              </button>
+            </td>
+            <td>
+              <button class="btn_icons delete" id="" data-id="">
+                <i class="small material-icons red-text">delete</i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
 
-    <!-- Delete Modal -->
-    <div id="modal1" class="modal confirm_box modal-fixed-footer s2">
-      <div class="modal-content">
-        <p class="flow-text">Are You Sure want to delete this record?</p>
-        <ul>
-          <li>
-            <h5>
-              Student:
-              <strong
-                id="sname"
-                class="lighten-5 red"
-                style="padding: 0 10px"
-              ></strong>
-            </h5>
-          </li>
-          <li>
-            <h5>
-              Phone:
-              <strong
-                id="sphone"
-                class="lighten-5 red"
-                style="padding: 0 10px"
-              ></strong>
-            </h5>
-          </li>
-          <li>
-            <h5>
-              Class:
-              <strong
-                id="sclass"
-                class="lighten-5 red"
-                style="padding: 0 10px"
-              ></strong>
-            </h5>
-          </li>
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <a href="javascript:void(0)" class="modal-close waves-effect btn-flat"
-          ><span>Cancel</span></a
-        >
-        <a
-          href="javascript:void(0)"
-          data-id=""
-          class="modal-close delete_confirm waves-effect waves-darken-1 btn red lighten-1"
-          ><span>Delete</span> <i class="small material-icons">delete</i></a
-        >
-      </div>
+  <!-- Delete Modal -->
+  <div id="modal1" class="modal confirm_box modal-fixed-footer s2">
+    <div class="modal-content">
+      <p class="flow-text">Are You Sure want to delete this record?</p>
+      <ul>
+        <li>
+          <h5>
+            Student:
+            <strong id="sname" class="lighten-5 red" style="padding: 0 10px"></strong>
+          </h5>
+        </li>
+        <li>
+          <h5>
+            Phone:
+            <strong id="sphone" class="lighten-5 red" style="padding: 0 10px"></strong>
+          </h5>
+        </li>
+        <li>
+          <h5>
+            Class:
+            <strong id="sclass" class="lighten-5 red" style="padding: 0 10px"></strong>
+          </h5>
+        </li>
+      </ul>
     </div>
+    <div class="modal-footer">
+      <a href="javascript:void(0)" class="modal-close waves-effect btn-flat"><span>Cancel</span></a>
+      <a href="javascript:void(0)" data-id="" class="modal-close delete_confirm waves-effect waves-darken-1 btn red lighten-1"><span>Delete</span> <i class="small material-icons">delete</i></a>
+    </div>
+  </div>
 
-    <!-- Delete Modal -->
-    <div id="editModal" class="modal confirm_box modal-fixed-footer s2">
-      <div class="modal-content">
-        <p class="flow-text">Edit Record</p>
-        <div class="row">
-          <form class="col s12" id="addForm">
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">person</i>
-                <input
-                  id="e-name"
-                  name="name"
-                  type="text"
-                  class="validate"
-                  required
-                  placeholder="First Name"
-                />
-              </div>
-              <div class="input-field col s12">
-                <i class="material-icons prefix">phone_in_talk</i>
-                <input
-                  id="e-phone"
-                  name="phone"
-                  type="tel"
-                  class="validate"
-                  required
-                  placeholder="Phone Number"
-                />
-              </div>
-              <div class="input-field col s12">
-                <i class="material-icons prefix">class</i>
-                <input
-                  id="e-class"
-                  name="class"
-                  type="text"
-                  class="validate"
-                  required
-                  placeholder="Class"
-                />
-              </div>
+  <!-- Edit Modal -->
+  <div id="editModal" class="modal confirm_box modal-fixed-footer s2">
+    <div class="modal-content">
+      <p class="flow-text">Edit Record</p>
+      <div class="row">
+        <form class="col s12" id="addForm">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">person</i>
+              <input id="e-name" name="name" type="text" class="validate" required placeholder="First Name" />
             </div>
-          </form>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <a href="javascript:void(0)" class="modal-close waves-effect btn-flat"
-          ><span>Cancel</span></a
-        >
-        <a
-          href="javascript:void(0)"
-          data-id=""
-          class="modal-close edit_confirm waves-effect waves-darken-1 btn green lighten-1"
-          ><span>Confirm</span> <i class="small material-icons">delete</i></a
-        >
+            <div class="input-field col s12">
+              <i class="material-icons prefix">phone_in_talk</i>
+              <input id="e-phone" name="phone" type="tel" class="validate" required placeholder="Phone Number" />
+            </div>
+            <div class="input-field col s12">
+              <i class="material-icons prefix">class</i>
+              <input id="e-class" name="class" type="text" class="validate" required placeholder="Class" />
+            </div>
+          </div>
+        </form>
       </div>
     </div>
+    <div class="modal-footer">
+      <a href="javascript:void(0)" class="modal-close waves-effect btn-flat"><span>Cancel</span></a>
+      <a href="javascript:void(0)" data-id="" class="modal-close edit_confirm waves-effect waves-darken-1 btn green lighten-1"><i class="small material-icons">done</i> <span> Confirm </span>
+        <i class="small material-icons">done_all</i>
+      </a>
+    </div>
+  </div>
 
-    <footer>
-      <div class="light-blue lighten-2" style="padding: 10px">
-        <h6 class="white-text center" style="margin: 0">
-          All rights reserved to Hassan Khan
-        </h6>
-      </div>
-    </footer>
-    <!-- Compiled and minified JavaScript -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
-      integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="./assets/scripts.js"></script>
-  </body>
+  <footer>
+    <div class="light-blue lighten-2" style="padding: 10px">
+      <h6 class="white-text center" style="margin: 0">
+        All rights reserved to Hassan Khan
+      </h6>
+    </div>
+  </footer>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="./assets/scripts.js"></script>
+</body>
+
 </html>

@@ -44,17 +44,54 @@ a.btn_icons:hover {
 
 .confirm_box .modal-footer > a {
   display: flex;
-  width: 100px;
+  width: 120px;
   justify-content: center;
   align-items: center;
   margin-left: 15px;
+}
+
+a.edit_confirm {
+  position: relative;
+  margin-left: 10px;
+}
+
+a.edit_confirm i {
+  position: absolute;
+  left: 6px;
+  transition: 0.5s;
+}
+
+a.edit_confirm span + i {
+  opacity: 0;
+}
+
+a.edit_confirm span {
+  transition: 0.5s;
+  transform: translateX(10px);
+}
+
+a.edit_confirm:hover i {
+  transition: 0.5s;
+  opacity: 0;
+}
+
+a.edit_confirm:hover span + i {
+  transition: 0.5s;
+  right: 10px;
+  opacity: 1;
+  left: auto;
+}
+
+a.edit_confirm:hover span {
+  transition: 0.5s;
+  transform: translateX(-10px);
 }
 
 @media only screen and (min-width: 600px) {
   .confirm_box {
     width: 30%;
   }
-  .confirm_box  {
+  .confirm_box {
     height: 50% !important;
     top: 20% !important;
   }

@@ -2,16 +2,19 @@
 
 include_once "conn.php";
 
-echo "<pre>";
+$searchTerm = $_POST['searchTerm'];
 
-echo "</pre>";
+$sql = "SELECT * FROM students
+        WHERE name LIKE '%{$searchTerm}%'
+        OR phone LIKE '%{$searchTerm}%' ORDER BY name ASC";
 
-
-$sql = "SELECT * FROM students ORDER BY id DESC;";
-$result = mysqli_query($conn, $sql) or die("Show Query failed: " . mysqli_error($conn));
+$result = mysqli_query($conn, $sql) or die("Search Query failed: " . mysqli_error($conn));
 $output = "";
 if (mysqli_num_rows($result) > 0) {
     foreach ($result as $keys) {
+        // echo "<pre>";
+        // print_r($keys);
+        // echo "</pre>";
         $output .= "
         <tr s-data-id='{$keys['id']}'>
             <td>{$keys['id']}</td>
@@ -29,9 +32,9 @@ if (mysqli_num_rows($result) > 0) {
                 </a>
             </td>
         </tr>";
+        echo $output;
+        // mysqli_close($conn);
     }
-    mysqli_close($conn);
-    echo $output; // It will print on index.php
 } else {
-    echo "<h2>No data found!</h2>";
+    echo "<h5>No Student found!</h5>";
 }

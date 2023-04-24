@@ -266,6 +266,23 @@ $(document).ready(function () {
       },
     });
   });
+
+  $("#search").on("keyup", function () {
+    let searchTerm = $(this).val();
+    if (searchTerm === "") {
+      loadRecords();
+    } else {
+      $.ajax({
+        url: "search.php",
+        method: "POST",
+        data: { searchTerm: searchTerm },
+        success: function (data) {
+          // console.log(data);
+          $("#table-data").html(data);
+        },
+      });
+    }
+  });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
