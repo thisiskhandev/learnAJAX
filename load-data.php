@@ -2,12 +2,22 @@
 
 include_once "conn.php";
 
-echo "<pre>";
+$limit_per_page = 5;
+$currentPage = "";
+if (isset($_POST["pageNo"])) {
+    $currentPage = $_POST["pageNo"];
+} else {
+    $currentPage = 1;
+}
 
-echo "</pre>";
+echo "Offset: " .  $offset = ($currentPage - 1) * $limit_per_page;
+echo "<br> Current page number: " . $currentPage;
+
+$sql = "SELECT * FROM students 
+ORDER BY id DESC
+LIMIT {$offset}, {$limit_per_page};";
 
 
-$sql = "SELECT * FROM students ORDER BY id DESC;";
 $result = mysqli_query($conn, $sql) or die("Show Query failed: " . mysqli_error($conn));
 $output = "";
 if (mysqli_num_rows($result) > 0) {
@@ -44,22 +54,32 @@ if (mysqli_num_rows($result) > 0) {
             </td>
         </tr>
         ";
+    } // loop closed
+    $output .= "</tbody></table>";
+
+    $sql_total = "SELECT * FROM students";
+    $result_total = mysqli_query($conn, $sql_total) or die("Pagination fetch Query failed: " . mysqli_error($conn));
+    echo "<br> Total rows: " . $total_records = mysqli_num_rows($result_total);
+    echo "<br> Total Pages: " . $total_pages = ceil($total_records / $limit_per_page);
+    $output .= "<div class='pagi_sec'><ul class='pagination'>";
+    if ($currentPage > 1) {
+        $prevPage = $currentPage - 1;
+        $output .= "<li class='waves-effect'><a id='{$prevPage}'><i class='material-icons'>chevron_left</i></a></li>";
     }
-    $output .= "
-    </tbody></table>
-    <div class='pagi_sec'>
-        <ul class='pagination'>
-            <li class='disabled'><a href='#!'><i class='material-icons'>chevron_left</i></a></li>
-            <li class='active waves-effect'><a href='#!'>1</a></li>
-            <li class='waves-effect'><a href='#!'>2</a></li>
-            <li class='waves-effect'><a href='#!'>3</a></li>
-            <li class='waves-effect'><a href='#!'>4</a></li>
-            <li class='waves-effect'><a href='#!'>5</a></li>
-            <li class='waves-effect'><a href='#!'><i class='material-icons'>chevron_right</i></a></li>
-        </ul>
-    </div>
-    ";
-    mysqli_close($conn);
+    for ($i = 1; $i <= $total_pages; $i++) {
+        if ($currentPage == $i) {
+            $active = "active";
+        } else {
+            $active = "";
+        }
+        $output .= "<li class='waves-effect {$active}'><a id={$i}>{$i}</a></li>";
+    }
+    if ($total_pages > $currentPage) {
+        $NextPage = $currentPage + 1;
+        $output .= "<li class='waves-effect'><a id='{$NextPage}'><i class='material-icons'>chevron_right</i></a></li>";
+    }
+    $output .= "</ul></div>";
+    // mysqli_close($conn);
     echo $output; // It will print on index.php
 } else {
     echo "<h2>No Record found!</h2>";

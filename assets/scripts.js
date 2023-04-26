@@ -14,7 +14,7 @@ $(document).ready(function () {
     </div>
   </div>
   `;
-  const loadRecords = async () => {
+  const loadRecords = async (page) => {
     // FIRST APPROACH
     /*$.ajax({
       url: "load-data.php",
@@ -51,6 +51,7 @@ $(document).ready(function () {
       const data = await $.ajax({
         url: "load-data.php",
         method: "POST",
+        data: { pageNo: page },
       });
       $("#table-data").html(data);
       // console.log(data);
@@ -64,9 +65,15 @@ $(document).ready(function () {
 
   loadRecords(); // Loading records
 
-  $("#viewData").click(function (e) {
-    loadRecords();
-  });
+  // Pagination
+  setInterval(() => {
+    // #Bug
+    $(".pagination > li > a").click(function () {
+      let pageNo = $(this).attr("id");
+      console.log(pageNo);
+      loadRecords(pageNo);
+    });
+  }, 500);
 
   $("#phone").on("keypress keyup blur", function (e) {
     $(this).val(
@@ -290,6 +297,7 @@ $(document).ready(function () {
     });
   });
 
+  // Search Records
   $("#search").on("keyup", function () {
     let searchTerm = $(this).val();
     if (searchTerm === "") {

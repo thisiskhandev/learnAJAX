@@ -26,9 +26,6 @@ if (mysqli_num_rows($result) > 0) {
     <tbody>
     ";
     foreach ($result as $keys) {
-        // echo "<pre>";
-        // print_r($keys);
-        // echo "</pre>";
         $output .= "
         <tr s-data-id='{$keys['id']}'>
             <td>{$keys['id']}</td>
