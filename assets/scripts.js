@@ -14,22 +14,54 @@ $(document).ready(function () {
     </div>
   </div>
   `;
-  const loadRecords = () => {
-    $.ajax({
+  const loadRecords = async () => {
+    // FIRST APPROACH
+    /*$.ajax({
       url: "load-data.php",
       type: "POST",
       // beforeSend: function () {
       //   $("#table-data").html($(loader).show(300));
       // },
       success: function (data) {
-        $("#loading").hide(300);
-        $("#table-data > #loading").remove();
+        // $("#loading").hide(300);
+        // $("#table-data > #loading").remove();
         $("#table-data").html(data);
         // setTimeout(() => {}, 3000);
         // console.log(data);
       },
-    });
+    });*/
+
+    // SECOND APPROACH
+    /*$.ajax({
+      url: "load-data.php",
+      type: "POST",
+    })
+      .then((data) => {
+        console.log(data);
+        $("#table-data").html(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };*/
+
+    // Async APPROACH ES6 BEST
+    console.log("loading data!");
+    try {
+      const data = await $.ajax({
+        url: "load-data.php",
+        method: "POST",
+      });
+      $("#table-data").html(data);
+      // console.log(data);
+    } catch (error) {
+      console.log(error);
+      if (error.status === 404) {
+        $("#table-data").html("<h3>No record found!</h3>");
+      }
+    }
   };
+
   loadRecords(); // Loading records
 
   $("#viewData").click(function (e) {
@@ -213,45 +245,14 @@ $(document).ready(function () {
   });
 
   // Hide Save button if user empty edit fields
-  /*
-  $("#e-name").on("keyup", function (e) {
-    console.log(e.target.value);
-    if (e.target.value === "") {
-      $(".confirm_box .edit_confirm").fadeOut(300);
-    } else {
-      $(".confirm_box .edit_confirm").fadeIn(300);
-    }
-  });
-
-  $("#e-phone").on("keyup", function (e) {
-    console.log(e.target.value);
-    if (e.target.value === "") {
-      $(".confirm_box .edit_confirm").fadeOut(300);
-    } else {
-      $(".confirm_box .edit_confirm").fadeIn(300);
-    }
-  });
-
-  $("#e-class").on("keyup", function (e) {
-    console.log(e.target.value);
-    if (e.target.value === "") {
-      $(".confirm_box .edit_confirm").fadeOut(300);
-    } else {
-      $(".confirm_box .edit_confirm").fadeIn(300);
-    }
-  });
-  */
   $("#e-name, #e-phone, #e-class").on("keyup", function (e) {
     let name = $("#e-name").val();
     let phone = $("#e-phone").val();
     let sclass = $("#e-class").val();
-    // if ($(this).val().trim() === "") {
-    //   console.log("You put only white space");
-    //   console.log($(this).val().trim());
-    // }
     if (name === "" || phone === "" || sclass === "") {
       $(".confirm_box .edit_confirm").fadeOut(300);
     } else if (
+      // If User put empty spaces before
       name.trim() === "" ||
       phone.trim() === "" ||
       sclass.trim() === ""
