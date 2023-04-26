@@ -2,11 +2,15 @@
 
 include_once "conn.php";
 
-$searchTerm = $_POST['searchTerm'];
+$searchTerm = mysqli_escape_string($conn, $_POST['searchTerm']);
+
+$limit_per_page = 10;
 
 $sql = "SELECT * FROM students
         WHERE name LIKE '%{$searchTerm}%'
-        OR phone LIKE '%{$searchTerm}%' ORDER BY name ASC";
+        OR phone LIKE '%{$searchTerm}%' 
+        ORDER BY name ASC
+        LIMIT 0, {$limit_per_page}";
 
 $result = mysqli_query($conn, $sql) or die("Search Query failed: " . mysqli_error($conn));
 $output = "";
@@ -44,20 +48,7 @@ if (mysqli_num_rows($result) > 0) {
             </td>
         </tr>";
     }
-    $output .= "
-    </tbody></table>
-    <div class='pagi_sec'>
-        <ul class='pagination'>
-            <li class='disabled'><a href='#!'><i class='material-icons'>chevron_left</i></a></li>
-            <li class='active'><a href='#!'>1</a></li>
-            <li class='waves-effect'><a href='#!'>2</a></li>
-            <li class='waves-effect'><a href='#!'>3</a></li>
-            <li class='waves-effect'><a href='#!'>4</a></li>
-            <li class='waves-effect'><a href='#!'>5</a></li>
-            <li class='waves-effect'><a href='#!'><i class='material-icons'>chevron_right</i></a></li>
-        </ul>
-    </div>
-    ";
+    $output .= "</tbody></table>";
     mysqli_close($conn);
     echo $output;
 } else {

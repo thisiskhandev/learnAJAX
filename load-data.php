@@ -15,7 +15,7 @@ echo "<br> Current page number: " . $currentPage;
 
 $sql = "SELECT * FROM students 
 ORDER BY id DESC
-LIMIT {$offset}, {$limit_per_page};";
+LIMIT {$offset}, {$limit_per_page}";
 
 
 $result = mysqli_query($conn, $sql) or die("Show Query failed: " . mysqli_error($conn));
@@ -79,7 +79,7 @@ if (mysqli_num_rows($result) > 0) {
         $output .= "<li class='waves-effect'><a id='{$NextPage}'><i class='material-icons'>chevron_right</i></a></li>";
     }
     $output .= "</ul></div>";
-    // mysqli_close($conn);
+    mysqli_close($conn);
     echo $output; // It will print on index.php
 } else {
     echo "<h2>No Record found!</h2>";
