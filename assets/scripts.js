@@ -213,6 +213,7 @@ $(document).ready(function () {
   });
 
   // Hide Save button if user empty edit fields
+  /*
   $("#e-name").on("keyup", function (e) {
     console.log(e.target.value);
     if (e.target.value === "") {
@@ -234,6 +235,27 @@ $(document).ready(function () {
   $("#e-class").on("keyup", function (e) {
     console.log(e.target.value);
     if (e.target.value === "") {
+      $(".confirm_box .edit_confirm").fadeOut(300);
+    } else {
+      $(".confirm_box .edit_confirm").fadeIn(300);
+    }
+  });
+  */
+  $("#e-name, #e-phone, #e-class").on("keyup", function (e) {
+    let name = $("#e-name").val();
+    let phone = $("#e-phone").val();
+    let sclass = $("#e-class").val();
+    // if ($(this).val().trim() === "") {
+    //   console.log("You put only white space");
+    //   console.log($(this).val().trim());
+    // }
+    if (name === "" || phone === "" || sclass === "") {
+      $(".confirm_box .edit_confirm").fadeOut(300);
+    } else if (
+      name.trim() === "" ||
+      phone.trim() === "" ||
+      sclass.trim() === ""
+    ) {
       $(".confirm_box .edit_confirm").fadeOut(300);
     } else {
       $(".confirm_box .edit_confirm").fadeIn(300);
