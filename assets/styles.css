@@ -19,6 +19,11 @@ thead {
   border-radius: 0;
 }
 
+footer {
+  position: absolute;
+  width: 100%;
+}
+
 a.btn_icons {
   background-color: transparent;
   border: 0;

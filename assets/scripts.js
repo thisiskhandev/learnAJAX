@@ -62,18 +62,20 @@ $(document).ready(function () {
       }
     }
   };
-
-  loadRecords(); // Loading records
+  // loadRecords(); // Loading records
 
   // Pagination
-  setInterval(() => {
-    // #Bug
-    $(".pagination > li > a").click(function () {
-      let pageNo = $(this).attr("id");
-      console.log(pageNo);
-      loadRecords(pageNo);
-    });
-  }, 500);
+  $(document).on("click", ".pagination > li > a", function () {
+    let pageNo = $(this).attr("id");
+    console.log(pageNo);
+    loadRecords(pageNo);
+    $("html, body").animate(
+      {
+        scrollTop: $("#viewDataRecord").offset().top,
+      },
+      1000
+    );
+  });
 
   $("#phone").on("keypress keyup blur", function (e) {
     $(this).val(
@@ -179,7 +181,7 @@ $(document).ready(function () {
             );
             loadRecords();
             M.toast({
-              html: "Data Added!",
+              html: "New Record Added!",
               classes: "rounded green accent-4",
               displayLength: 2000,
             });

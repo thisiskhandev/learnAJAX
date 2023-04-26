@@ -43,12 +43,12 @@ if (mysqli_num_rows($result) > 0) {
             <td>{$keys['class']}</td>
             <td>{$keys['phone']}</td>
             <td>
-                <a class='btn_icons edit modal-trigger' href='#editModal' id='{$keys['id']}' data-id='{$keys['id']}'>
+                <a class='btn_icons edit modal-trigger' href='#editModal' data-id='{$keys['id']}'>
                   <i class='small material-icons'>edit</i>
                 </a>
             </td>
             <td>
-                <a class='btn_icons delete modal-trigger' href='#modal1' id='{$keys['id']}' data-id='{$keys['id']}'>
+                <a class='btn_icons delete modal-trigger' href='#modal1' data-id='{$keys['id']}'>
                   <i class='small material-icons red-text'>delete</i>
                 </a>
             </td>
